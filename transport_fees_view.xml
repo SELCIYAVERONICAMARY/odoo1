@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="transport_fees_tree_view" model="ir.ui.view">
+            <field name="name">transport.fees.tree</field>
+            <field name="model">transport.fees</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="transport_fees_form_view" model="ir.ui.view">
+            <field name="name">transport.fees.form</field>
+            <field name="model">transport.fees</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Payment Details" class="text-center"/>
+                        <group>
+                            <field name="name"/>
+                            <field name="payment_method"/>
+                            <field name="amount1" attrs="{'invisible': [('payment_method',  '!=', 'monthly')]}"/>
+                            <field name="amount2" attrs="{'invisible': [('payment_method',  '!=', 'annual')]}"/>
+
+                            <field name="payment_type"/>
+                        </group>
+
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="transport_fees_action_view" model="ir.actions.act_window">
+            <field name="name">Transport Fees</field>
+            <field name="res_model">transport.fees</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Transport Fees Management" id="menu_transport_fee_management"
+                  parent="transportation.menu_transportation_management"/>
+        <menuitem name="Transport Fees" id="menu_transport_fees_profile" action="transport_fees_action_view"
+                  parent="menu_transport_fee_management" sequence="1"/>
+    </data>
+</odoo>

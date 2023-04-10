@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="hostel_fees_tree_view" model="ir.ui.view">
+            <field name="name">hostel.fees.tree</field>
+            <field name="model">hostel.fees</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="hostel_fees_form_view" model="ir.ui.view">
+            <field name="name">hostel.fees.form</field>
+            <field name="model">hostel.fees</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Payment Details" class="text-center"/>
+                        <group>
+                            <field name="name"/>
+                            <field name="amount1" attrs="{'invisible': [('payment_method',  '!=', 'monthly')]}"/>
+                            <field name="amount2" attrs="{'invisible': [('payment_method',  '!=', 'annual')]}"/>
+                            <field name="payment_method"/>
+                            <field name="payment_type"/>
+                        </group>
+
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="hostel_fees_action_view" model="ir.actions.act_window">
+            <field name="name">Hostel fees</field>
+            <field name="res_model">hostel.fees</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Hostel Fees Management" id="menu_hostel_fee_management"
+                  parent="hostelmodule.menu_hostel_management"/>
+        <menuitem name="Hostel Fees" id="menu_hostel_fees_profile" action="hostel_fees_action_view"
+                  parent="menu_hostel_fee_management" sequence="1"/>
+    </data>
+</odoo>

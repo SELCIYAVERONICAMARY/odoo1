@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="school_fees_tree_view" model="ir.ui.view">
+            <field name="name">school.fees.tree</field>
+            <field name="model">school.fees</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="student_id"/>
+                    <field name="amount"/>
+                </tree>
+            </field>
+        </record>
+        <record id="school_fees_form_view" model="ir.ui.view">
+            <field name="name">school.fees.form</field>
+            <field name="model">school.fees</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Payment Details" class="text-center"/>
+                        <group>
+                            <group>
+                                <field name="student_id"/>
+
+                            </group>
+                            <group>
+                                <field name="amount"/>
+                                <!--                                <field name="payment_method"/>-->
+                                <field name="payment_type"/>
+                            </group>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="school_fees_action_view" model="ir.actions.act_window">
+            <field name="name">School Fees</field>
+            <field name="res_model">school.fees</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="School Fees Management" id="menu_school_fee_management"
+                  parent="school.menu_school_management"/>
+        <menuitem name="school Fees" id="menu_school_fees_profile" action="school_fees_action_view"
+                  parent="menu_school_fee_management" sequence="1"/>
+    </data>
+</odoo>
+
