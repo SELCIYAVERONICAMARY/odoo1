@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="student_tree_view" model="ir.ui.view">
+            <field name="name">student.tree</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="student_id"/>
+                    <!--                    <field name="school_id"/>-->
+                </tree>
+            </field>
+        </record>
+        <record id="student_form_view" model="ir.ui.view">
+            <field name="name">student.form</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="STUDENT DETAILS" class="text-center"/>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="student_id"/>
+                                <!--                                <field name="school_id"/>-->
+                                <field name="dob"/>
+                                <field name="age"/>
+                                <field name="gender" widget="radio"/>
+
+                            </group>
+                            <group>
+                                <field name="student_image" widget="image"/>
+                            </group>
+                        </group>
+
+                        <!--                            <field name="date"/>-->
+                        <group>
+                            <field name="department_id"/>
+
+
+                            <!--                            <field name="school_code"/>-->
+                            <field name="standard"/>
+
+
+
+                        </group>
+                        <group string="Other Details">
+                            <field name="hostel_dayscholar"/>
+                            <field name="transport"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="student_calendar_view" model="ir.ui.view">
+            <field name="name">student.calendar</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <calendar date_start="dob" color='id' mode="month" quick_add="True">
+                    <field name="name"/>
+                    <field name="student_id"/>
+                    <field name="standard"/>
+                    <field name="dob"/>
+                </calendar>
+            </field>
+        </record>
+
+
+        <record id="student_action_view" model="ir.actions.act_window">
+            <field name="name">Students Profile</field>
+            <field name="res_model">school.student</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+        </record>
+        <menuitem name="Students Profile" id="menu_students_profile" parent="menu_school_management"
+                  action="student_action_view"/>
+    </data>
+</odoo>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="dept_tree_view" model="ir.ui.view">
+            <field name="name">dept.tree</field>
+            <field name="model">school.dept</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="school_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="dept_form_view" model="ir.ui.view">
+            <field name="name">dept.form</field>
+            <field name="model">school.dept</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="DEPARTMENT DETAILS" class="text-center"/>
+
+
+                        <group>
+                            <field name="name"/>
+                            <field name="students"/>
+                            <field name="staffs"/>
+                            <field name="average"/>
+                            <field name="pass_percentage"/>
+                            <field name="fees"/>
+                        </group>
+                        <group>
+                            <field name="school_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_dept_pass_percentage">
+            <field name="name">dept.graph</field>
+            <field name="model">school.dept</field>
+            <field name="type">graph</field>
+            <field name="arch" type="xml">
+                <graph string="Book" type="bar">
+                    <field name="name" group="True"/>
+                    <field name="pass_percentage" operator="*"/>
+                </graph>
+            </field>
+        </record>
+
+
+        <record id="dept_action_view" model="ir.actions.act_window">
+            <field name="name">Departments</field>
+            <field name="res_model">school.dept</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+        <!--        <menuitem name="dept management" id="menu_dept_management"/>-->
+        <menuitem name="Departments" id="menu_dept_profile" parent="menu_school_management"
+                  action="dept_action_view"/>
+    </data>
+</odoo>
+
+

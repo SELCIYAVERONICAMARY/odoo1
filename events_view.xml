@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="event_tree_view" model="ir.ui.view">
+            <field name="name">event.tree</field>
+            <field name="model">school.event</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="school_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="event_form_view" model="ir.ui.view">
+            <field name="name">event.form</field>
+            <field name="model">school.event</field>
+            <field name="arch" type="xml">
+                <form>
+<!--                    <header>-->
+<!--                        <button name="upcoming_event" string="UPCOMING" type="object"/>-->
+
+<!--                    </header>-->
+                    <sheet>
+
+                        <group string="EVENT DETAILS" class="text-center"/>
+                        <group>
+                            <field name="name"/>
+                            <field name="date"/>
+                            <field name="time"/>
+                        </group>
+                        <group>
+                            <field name="school_id"/>
+                            <field name="organizer"/>
+                            <field name="department_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="event_search_view" model="ir.ui.view">
+            <field name="name">event.search</field>
+            <field name="model">school.event</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="time"/>
+                    <field name="school_id"/>
+                    <field name="organizer"/>
+                    <field name="department_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="event_calendar_view" model="ir.ui.view">
+            <field name="name">event.calendar</field>
+            <field name="model">school.event</field>
+            <field name="arch" type="xml">
+                <calendar date_start="date" color='id' mode="month" quick_add="True">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="time"/>
+                    <field name="school_id"/>
+                    <field name="organizer"/>
+                    <field name="department_id"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record id="event_action_view" model="ir.actions.act_window">
+            <field name="name">Events</field>
+            <field name="res_model">school.event</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+        </record>
+        <menuitem name="Events" id="menu_events_profile" parent="menu_school_management"
+                  action="event_action_view"/>
+    </data>
+</odoo>
+

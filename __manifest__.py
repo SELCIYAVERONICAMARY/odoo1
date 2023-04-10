@@ -1,16 +1,23 @@
 {
-    'name': 'Hostel',
+    'name': 'School',
     'version': '1.0',
-    'summary': 'Hostel Management',
+    'summary': 'Schools Management',
     'description': """
-    This module is used for Hostel Management.
+    This module is used for Schools Management.
 
         """,
-
     'data': [
-            'views/hostel_info_view.xml',
-            'views/rooms_view.xml',
-            'views/hostel_application_view.xml',
+
+        'security/ir.model.access.csv',
+        'security/school_security.xml',
+        'wizard/student_wizard_view.xml',
+        'views/school_view.xml',
+        'views/dept_view.xml',
+        'views/staffs_view.xml',
+        'views/events_view.xml',
+        'views/students_view.xml',
+        'views/admission_form_view.xml',
+        'report/school_addmission_report.xml',
 
 
 

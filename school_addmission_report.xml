@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+                string="ADMISSION FORM"
+                id="action_report_admission_form"
+                model='school.admission'
+                report_type="qweb-pdf"
+                name="school.report_admission_form"
+                file="school.report_admission_form"
+                paperformat="paperformat_admission_euro_landscape"
+                print_report_name="'ADMISSION FORM - %s' % (object.name)"
+        />
+        <template id="report_admission_form">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page" style="font-size:11px">
+                            <header>
+                                <div class="text-center">
+                                    <strong>
+                                        <b>ADMISSION FORM</b>
+                                    </strong>
+
+
+                                </div>
+                            </header>
+                            <table>
+                                <p class="oe_mt32" style="text-align:center;font-size:18px">
+                                    <h3 t-field="o.name"/>
+                                </p>
+
+                            </table>
+
+
+                            <table>
+                                <div>
+                                    <div class="text-left">
+                                        <strong>Date of Birth:</strong>
+                                        <p t-field="o.dob"/>
+
+                                    </div>
+                                    <div>
+                                        <strong>
+                                            <style text="align:center"/>
+                                            <!--                                        <img t-attf-src="/home/dexra38/workspace/My_module/school/static/source/img/default.png,{{o.image}}"
+                                            align="center" height="65" width="65" style='margin:0px;padding-top:0px;'/>-->
+                                            <img t-attf-src="data:image/jpg;base64,{{ o.image}}" align="right"
+                                                 height="90" width="75" style='margin:0px;padding-top:0px;'/>
+                                        </strong>
+                                    </div>
+
+                                    <div>
+                                        <strong>Age:</strong>
+                                        <p t-field="o.age"/>
+                                    </div>
+                                    <div>
+                                        <strong>Gender</strong>
+                                        <p t-field="o.gender"/>
+                                    </div>
+                                    <div>
+                                        <strong>Applied School</strong>
+                                        <p t-field="o.school_names"/>
+                                    </div>
+                                    <div>
+                                        <strong>Department</strong>
+                                        <p t-field="o.department_id"/>
+                                    </div>
+                                    <div>
+                                        <strong>Application Date:</strong>
+                                        <p t-field="o.applied_date"/>
+                                    </div>
+                                </div>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+        <record id="paperformat_admission_euro_landscape" model="report.paperformat">
+            <field name="name">European - Landscape Custom</field>
+            <field name="default" eval="True"/>
+            <field name="page_height">30</field>
+            <field name="page_width">10</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">0</field>
+        </record>
+    </data>
+</odoo>

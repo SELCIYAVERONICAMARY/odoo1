@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="school_tree_view" model="ir.ui.view">
+            <field name="name">school.tree</field>
+            <field name="model">school.school</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="school_code"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="school_form_view" model="ir.ui.view">
+            <field name="name">school.form</field>
+            <field name="model">school.school</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+
+                        <group string="SCHOOL DETAILS" class="text-center"/>
+
+
+                        <group>
+                            <group>
+                                <field name="name" required="True" placeholder="School Name"/>
+
+                                <field name="school_code" required="True"/>
+                                <field name="tag_line"/>
+                            </group>
+                            <group>
+                                <field name="school_image" widget="image" class="oe_avatar"/>
+
+                            </group>
+
+
+                        </group>
+                        <group>
+                            <field name="department_ids"/>
+                        </group>
+                        <group string="ADDRESS" class="text_right">
+                            <field name="door_no"/>
+                            <field name="street1"/>
+                            <field name="street2"/>
+                            <field name="place_city"/>
+                            <field name="district"/>
+                            <field name="state_id"/>
+                            <field name="country_ids"/>
+                        </group>
+                        <group>
+                            <field name="achievements"/>
+                        </group>
+
+
+                        <group string="STAFF DETAILS" class="text-left">
+                            <field name="staff_id"/>
+                        </group>
+                        <group string="FOR ANY DETAILS CONTACT...">
+                            <field name="contact"/>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="school_action_view" model="ir.actions.act_window">
+            <field name="name">School</field>
+            <field name="res_model">school.school</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p>
+                    Click to create a New School
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="School Management" id="menu_school_management"/>
+        <menuitem name="School Profile" id="menu_school_profile" parent="menu_school_management"
+                  action="school_action_view"/>
+    </data>
+</odoo>

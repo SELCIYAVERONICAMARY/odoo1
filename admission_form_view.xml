@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="admission_tree_view" model="ir.ui.view">
+            <field name="name">admission.tree</field>
+            <field name="model">school.admission</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="school_names"/>
+                </tree>
+            </field>
+        </record>
+        <record id="admission_form_view" model="ir.ui.view">
+            <field name="name">admission.form</field>
+            <field name="model">school.admission</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <!--                        <header>-->
+                        <!--                            <button name="submit_application" string="Submit" type="object"/>-->
+
+                        <!--                        </header>-->
+                        <group string="ADMISSION FORM" class="text-center"/>
+                        <group>
+
+                            <group string="PERSONAL DETAILS" class="text-left">
+                                <field name="name"/>
+                                <field name="dob"/>
+                                <field name="age"/>
+                                <field name="gender"/>
+
+                            </group>
+                            <group>
+                                <field name="image" widget="image" class="oe_avatar" style="text-align:right"/>
+                            </group>
+                        </group>
+
+
+                        <group string="ADDRESS" class="text-left">
+                            <field name="door_no"/>
+                            <field name="street1"/>
+                            <field name="street2"/>
+                            <field name="place_city"/>
+                            <field name="district"/>
+                            <field name="state_id"/>
+                            <field name="country_ids"/>
+                        </group>
+
+                        <group string="PARENT DETAILS" class="text-left">
+                            <field name="father_name"/>
+                            <field name="father_work"/>
+                            <field name="number1"/>
+                            <field name="mother_name"/>
+                            <field name="mother_work"/>
+                            <field name="number2"/>
+                        </group>
+                        <group>
+                            <field name="school_names"/>
+                            <field name="standard_selection"/>
+                            <field name="medium"/>
+                            <field name="department_id"/>
+                            <field name="fees_amount"/>
+
+                        </group>
+                        <group string="PREVIOUSLY STUDIED SCHOOL DETAILS" class="text-left">
+                            <field name="school_name"/>
+                            <field name="standard"/>
+                            <field name="previous_medium"/>
+                        </group>
+                        <group string="HOSTEL AND TRANSPORTATION DETAILS" class="text-left">
+                            <field name="hostel"/>
+                            <button name="generate_hostel_application_form" string="Tap to fill hostel application form" type="object" class="btn-primary"
+                                    attrs="{'invisible': [('hostel', '!=', True)]}"/>
+<!--                            <field name="hostel_application" attrs="{'invisible': [('hostel',  '!=', True)]}"/>-->
+                            <field name="transportation"/>
+                            <!--                            <field name="transport_application"-->
+                            <!--                                   attrs="{'invisible': [('transportation',  '!=', True)]}"/>-->
+
+                        </group>
+                        <group>
+                            <field name="sibling"/>
+                            <field name="sibling_name"/>
+                            <field name="sibling_standard"/>
+                            <field name="relationship"/>
+                        </group>
+                        <group>
+                            <field name="applied_date"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="hostel_application_form_view_inherited">
+            <field name="name">hostel.application.form.view.inherited</field>
+            <field name="model">hostel.application</field>
+            <field name="inherit_id" ref="hostelmodule.application_form_view"/>
+                <field name="priority" eval="15"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="field1" attrs="{'invisible': [('new_or_old', '!=', 'new')]}"/>
+                </xpath>
+
+<!--                <xpath expr="//field[@name='name']" position="before">-->
+<!--                    -->
+<!--                </xpath>-->
+
+            </field>
+        </record>
+
+
+        <record id="admission_action_view" model="ir.actions.act_window">
+            <field name="name">School Admission Form</field>
+            <field name="res_model">school.admission</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem name="School Admission Form" id="menu_school_admission" parent="menu_school_management"
+                  action="admission_action_view"/>
+    </data>
+</odoo>
+
