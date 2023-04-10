@@ -1,25 +1,16 @@
 {
-    'name': 'School',
+    'name': 'Transportation',
     'version': '1.0',
-    'summary': 'Schools Management',
+    'summary': 'Transportation Management',
     'description': """
-    This module is used for Schools Management.
+    This module is used for Transportation Management For Schools.
 
         """,
     'data': [
 
-        'security/ir.model.access.csv',
-        'security/school_security.xml',
-        'wizard/student_wizard_view.xml',
-        'views/school_view.xml',
-        'views/dept_view.xml',
-        'views/staffs_view.xml',
-        'views/events_view.xml',
-        'views/students_view.xml',
-        'views/admission_form_view.xml',
-        'report/school_addmission_report.xml',
-
-
+        'views/transport_info_view.xml',
+        'views/bus_details_view.xml',
+        'views/transport_application_view.xml',
 
 
     ],

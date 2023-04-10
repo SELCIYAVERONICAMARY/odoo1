@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="transport_application_tree_view" model="ir.ui.view">
+            <field name="name">application.tree</field>
+            <field name="model">transport.application</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="student_name"/>
+
+
+                </tree>
+            </field>
+        </record>
+        <record id="transport_application_form_view" model="ir.ui.view">
+            <field name="name">application.form</field>
+            <field name="model">transport.application</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Application Form" class="text-center"/>
+                        <group>
+                            <group>
+                                <field name="student_name"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="school_id"/>
+
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="transport_application_action_view" model="ir.actions.act_window">
+            <field name="name">Transport Application</field>
+            <field name="res_model">transport.application</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem name="Transport Application" id="menu_transport_application" parent="menu_transportation_management"
+                  action="transport_application_action_view"/>
+    </data>
+</odoo>
+

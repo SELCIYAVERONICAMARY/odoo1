@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="bus_details_tree_view" model="ir.ui.view">
+            <field name="name">bus.tree</field>
+            <field name="model">bus.details</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="bus_number"/>
+                    <field name="bus_route"/>
+                    <field name="school_id"/>
+
+
+                </tree>
+            </field>
+        </record>
+        <record id="bus_details_form_view" model="ir.ui.view">
+            <field name="name">bus.form</field>
+            <field name="model">bus.details</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Bus Details" class="text-center"/>
+                        <group>
+                            <field name="bus_number"/>
+                            <field name="bus_route"/>
+                            <field name="capacity"/>
+                        </group>
+
+                        <group>
+                            <field name="school_id"/>
+
+
+                            <field name="driver"/>
+                            <field name="contact_no"/>
+
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="bus_details_action_view" model="ir.actions.act_window">
+            <field name="name">Bus Details</field>
+            <field name="res_model">bus.details</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem name="Bus Details" id="menu_bus_profile" parent="menu_transportation_management"
+                  action="bus_details_action_view"/>
+    </data>
+</odoo>
+

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="transportation_tree_view" model="ir.ui.view">
+            <field name="name">transportation.tree</field>
+            <field name="model">transportation.information</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="school_id"/>
+
+                </tree>
+            </field>
+        </record>
+        <record id="transportation_form_view" model="ir.ui.view">
+            <field name="name">transportation.form</field>
+            <field name="model">transportation.information</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Transportation Details" class="text-center"/>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="school_id"/>
+                            <field name="total_bus"/>
+                            <field name="bus_details"/>
+
+
+                        </group>
+                        <group string="FOR ANY QUERIES FIND THE BELOW DETAILS..." class="text-left">
+                            <field name="manager"/>
+                            <field name="contact"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="transportation_action_view" model="ir.actions.act_window">
+            <field name="name">Transport Profile</field>
+            <field name="res_model">transportation.information</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem name="Transportation Management" id="menu_transportation_management"/>
+        <menuitem name="Transportation Profile" id="menu_transportation_profile" parent="menu_transportation_management"
+                  action="transportation_action_view"/>
+    </data>
+</odoo>
+
