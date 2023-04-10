@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="application_tree_view" model="ir.ui.view">
+            <field name="name">application.tree</field>
+            <field name="model">hostel.application</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="hostel_name"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="application_form_view" model="ir.ui.view">
+            <field name="name">application.form</field>
+            <field name="model">hostel.application</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <header>
+                            <field name="state" widget="statusbar"/>
+                            <button name="waiting_for_approval_state" string="Submit" type="object" class="btn-primary"
+                                    attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                            <button name="approval_state" string="Approve" type="object" class="btn-primary"
+                                    attrs="{'invisible': [('state', '!=', 'waiting_for_approval')]}"/>
+                        </header>
+                        <group string="APPLICATION FORM" class="text-center">
+                            <group string="Student Details" class="text-left">
+                                <field name="new_or_old"/>
+                                <field name="name" attrs="{'invisible': [('new_or_old', '!=', 'old')]}"/>
+                                <field name="hostel_name"/>
+
+                                <field name="application_date"/>
+
+                            </group>
+                            <group string="Guardian Details" class="text-left">
+                                <field name="guardian_name"/>
+                                <field name="contact"/>
+
+                            </group>
+                        </group>
+                        <group>
+                            <group string="YOUR PREFERENCE" class="text-left">
+                                <field name="room_selection"/>
+
+
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="application_action_view" model="ir.actions.act_window">
+            <field name="name">Hostel Application Form</field>
+            <field name="res_model">hostel.application</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Hostel Application Form" id="menu_application_profile" parent="menu_hostel_management"
+                  action="application_action_view"/>
+    </data>
+</odoo>
+
+

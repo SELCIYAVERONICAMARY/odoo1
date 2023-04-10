@@ -1,23 +1,22 @@
 {
-    'name': 'Fees Management',
+    'name': 'Hostel',
     'version': '1.0',
-    'summary': 'Fees Management',
+    'summary': 'Hostel Management',
     'description': """
-    This module is used for fees management.
+    This module is used for Hostel Management.
 
         """,
-    "depends": ['base', 'school', 'hostelmodule','transportation'],
 
     'data': [
-            'views/hostel_fees_view.xml',
-            'views/school_fees_view.xml',
-            'views/transport_fees_view.xml',
+            'views/hostel_info_view.xml',
+            'views/rooms_view.xml',
+            'views/hostel_application_view.xml',
+
 
 
 
     ],
     'installable': True,
-    'auto_install': False,
-    'application': True,
+    'auto_install': False
 
 }

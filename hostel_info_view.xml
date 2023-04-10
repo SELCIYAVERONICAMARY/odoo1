@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="hostel_tree_view" model="ir.ui.view">
+            <field name="name">hostel.tree</field>
+            <field name="model">hostel.information</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="availability"/>
+                </tree>
+            </field>
+        </record>
+        <record id="hostel_form_view" model="ir.ui.view">
+            <field name="name">hostel.form</field>
+            <field name="model">hostel.information</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="HOSTEL DETAILS" class="text-center"/>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group string="ADDRESS" class="text-left">
+                                <field name="door_no"/>
+                                <field name="street1"/>
+                                <field name="place_city"/>
+                                <field name="district"/>
+                                <field name="state_id"/>
+                                <field name="country_ids"/>
+                            </group>
+                        </group>
+                        <group string="ROOM DETAILS" class="text-left">
+                            <field name="total_rooms"/>
+                            <field name="availability"/>
+                            <field name="rooms"/>
+
+
+                        </group>
+                        <group string="FEES DETAILS" class="text-left">
+                            <!--                            <group string="ANNUAL FEE DETAILS" class="text-left">-->
+                            <group class="text-left">
+                                <field name="fees1_annual"/>
+                                <field name="fees2_annual"/>
+                                <field name="fees3_annual"/>
+                                <field name="fees4_annual"/>
+                            </group>
+                            <group>
+                            </group>
+
+                            <!--                            </group>-->
+                            <!--                            <group string="MONTHLY FEE DETAILS" class="text-left">-->
+                            <!--                                <field name="fees1_monthly"/>-->
+                            <!--                                <field name="fees2_monthly"/>-->
+                            <!--                                <field name="fees3_monthly"/>-->
+                            <!--                                <field name="fees4_monthly"/>-->
+
+                            <!--                            </group>-->
+                        </group>
+                        <group string="FOR ANY QUERIES FIND THE BELOW DETAILS..." class="text-left">
+                            <field name="manager"/>
+                            <field name="contact"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="hostel_action_view" model="ir.actions.act_window">
+            <field name="name">Hostel Profile</field>
+            <field name="res_model">hostel.information</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem name="Hostel Management" id="menu_hostel_management"/>
+        <menuitem name="Hostel Profile" id="menu_hostel_profile" parent="menu_hostel_management"
+                  action="hostel_action_view"/>
+    </data>
+</odoo>
+
